@@ -1,9 +1,6 @@
 package com.hotel.pet.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,11 +8,12 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class CuidadorModel {
     @Id
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
 
     //private UserModel user;

@@ -1,22 +1,21 @@
 package com.hotel.pet.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 
 public class UserModel {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO, generator = "increment")
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -34,6 +33,7 @@ public class UserModel {
     private String cpf;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name= "id_telefone")
     private TelefoneModel telefone;
 
 }

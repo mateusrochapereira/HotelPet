@@ -8,12 +8,13 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class EnderecoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     @Column(name = "id", nullable = false)
-    private long id;
+    private Integer id;
 
     @Column(name = "quadra", nullable = false)
     private String quadra;

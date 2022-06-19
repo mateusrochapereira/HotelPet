@@ -11,9 +11,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 
-public class UserModel {
+@Table(name = "usuario")
+public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator = "increment")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -23,17 +24,17 @@ public class UserModel {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @Column(name = "nome",nullable = false)
+    @Column(name = "nome", nullable = false)
     private String nome;
 
     @Column(name = "sobrenome", nullable = false)
     private String sobreNome;
 
-    @Column(name = "cpf",nullable = false)
+    @Column(name = "cpf", nullable = false)
     private String cpf;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name= "id_telefone")
-    private TelefoneModel telefone;
+    @JoinColumn(name = "id_telefone")
+    private Telefone telefone;
 
 }

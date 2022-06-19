@@ -3,6 +3,7 @@ package com.hotel.pet.model;
 import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 
@@ -11,12 +12,13 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CuidadorTemCategoriaPetModel {
-    @Column(name = "id_tipo_pet", nullable = false)
-    private Long id_tipo_pet;
+@Entity
 
-    @Column(name = "id_tipo_cuidador", nullable = false)
-    private Long id_tipo_cuidador;
+public class CuidadorTemCategoriaPet {
+
+    @EmbeddedId
+    private IdsCuidadorECategoriaPet idsCuidadorECategoriaPet;
+
 
     @Column(name = "peso", nullable = false)
     private double peso;

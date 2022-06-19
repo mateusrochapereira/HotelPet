@@ -1,31 +1,30 @@
 package com.hotel.pet.services;
 
-import com.hotel.pet.model.EnderecoModel;
-import com.hotel.pet.model.TelefoneModel;
-import com.hotel.pet.model.UserModel;
+import com.hotel.pet.model.Telefone;
+import com.hotel.pet.model.User;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class UsuarioMapper {
 
-    public UserModel convert(UserModel userModelAtualizado, UserModel userModelDesatualizado){
-        TelefoneModel telefoneAtualizado = userModelAtualizado.getTelefone();
-        TelefoneModel telefoneModelDesatualizado = userModelDesatualizado.getTelefone();
+    public User convert(User userAtualizado, User userDesatualizado) {
+        Telefone telefoneAtualizado = userAtualizado.getTelefone();
+        Telefone telefoneDesatualizado = userDesatualizado.getTelefone();
 
-        return UserModel.builder()
-                .id(userModelDesatualizado.getId())
-                .nome(userModelAtualizado.getNome())
-                .senha(userModelAtualizado.getSenha())
-                .sobreNome((userModelAtualizado.getSobreNome()))
-                .cpf(userModelAtualizado.getCpf())
-                .email(userModelAtualizado.getEmail())
-                .telefone(getTelefone(telefoneModelDesatualizado.getId(), telefoneAtualizado))
+        return User.builder()
+                .id(userDesatualizado.getId())
+                .nome(userAtualizado.getNome())
+                .senha(userAtualizado.getSenha())
+                .sobreNome((userAtualizado.getSobreNome()))
+                .cpf(userAtualizado.getCpf())
+                .email(userAtualizado.getEmail())
+                .telefone(getTelefone(telefoneDesatualizado.getId(), telefoneAtualizado))
 
                 .build();
     }
 
-    private static TelefoneModel getTelefone(Integer id, TelefoneModel telefoneAtualizado) {
-        return TelefoneModel.builder()
+    private static Telefone getTelefone(Integer id, Telefone telefoneAtualizado) {
+        return Telefone.builder()
                 .id(id)
                 .ddd(telefoneAtualizado.getDdd())
                 .numero(telefoneAtualizado.getNumero())

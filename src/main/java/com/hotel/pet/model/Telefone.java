@@ -10,15 +10,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TelefoneModel {
+public class Telefone {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator = "increment")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
 
-    @Column(name="id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "numero", nullable = false)
-    private  Integer numero;
+    private Integer numero;
 
     @Column(name = "ddd", nullable = false)
     private Integer ddd;

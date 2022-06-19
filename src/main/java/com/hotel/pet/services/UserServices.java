@@ -1,6 +1,6 @@
 package com.hotel.pet.services;
 
-import com.hotel.pet.model.UserModel;
+import com.hotel.pet.model.User;
 import com.hotel.pet.model.exception.UserNaoEncontrado;
 import com.hotel.pet.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +15,8 @@ public class UserServices {
 
     final UserRepository userRepository;
 
-    public void salvarUser(UserModel userModel){
-        userRepository.save(userModel);
+    public void salvarUser(User user) {
+        userRepository.save(user);
     }
 
     public ResponseEntity<ResponseEntity> removerUsuarioporId(Integer id) {
@@ -27,16 +27,16 @@ public class UserServices {
         return ResponseEntity.noContent().build();
     }
 
-    public List<UserModel> listarUsuarios() {
+    public List<User> listarUsuarios() {
         return userRepository.findAll();
     }
 
-    public UserModel atualizarUsuario(Integer id, UserModel userModelAtualizado) {
-        UserModel userModelDesatualizado = userRepository.findById(id)
+    public User atualizarUsuario(Integer id, User userAtualizado) {
+        User userDesatualizado = userRepository.findById(id)
                 .orElseThrow(UserNaoEncontrado::new);
 
-        UserModel usuarioBd = UsuarioMapper.convert(userModelAtualizado, userModelDesatualizado);
-        return  userRepository.save(usuarioBd);
+        User usuarioBd = UsuarioMapper.convert(userAtualizado, userDesatualizado);
+        return userRepository.save(usuarioBd);
     }
 }
 

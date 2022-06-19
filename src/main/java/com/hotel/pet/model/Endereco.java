@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnderecoModel {
+public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     @Column(name = "id", nullable = false)

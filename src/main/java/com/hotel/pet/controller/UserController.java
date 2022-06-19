@@ -1,10 +1,9 @@
 package com.hotel.pet.controller;
 
-import com.hotel.pet.model.UserModel;
+import com.hotel.pet.model.User;
 import com.hotel.pet.model.exception.UserNaoEncontrado;
 import com.hotel.pet.services.UserServices;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,8 @@ public class UserController {
     private final UserServices userServices;
 
     @PostMapping
-    public void adicionarUser(@RequestBody UserModel userModel) {
-        userServices.salvarUser(userModel);
+    public void adicionarUser(@RequestBody User user) {
+        userServices.salvarUser(user);
     }
 
     @DeleteMapping("/removerUsuarioPorId/{id}")
@@ -27,15 +26,15 @@ public class UserController {
     }
 
     @GetMapping("/listarUsuarios")
-    public List<UserModel> listarUsuarios() {
+    public List<User> listarUsuarios() {
         return userServices.listarUsuarios();
     }
 
     @PutMapping("atualizacaoUsuario/{id}")
-    public ResponseEntity<UserModel> atualizarUsuario(@PathVariable Integer id, @RequestBody  UserModel userModel) {
+    public ResponseEntity<User> atualizarUsuario(@PathVariable Integer id, @RequestBody User user) {
         try {
-            UserModel userModelAtualizado = userServices.atualizarUsuario(id, userModel);
-            return  ResponseEntity.ok(userModelAtualizado);
+            User userAtualizado = userServices.atualizarUsuario(id, user);
+            return ResponseEntity.ok(userAtualizado);
         } catch (UserNaoEncontrado u) {
             return ResponseEntity.notFound().build();
         }

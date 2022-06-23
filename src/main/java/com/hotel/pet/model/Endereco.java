@@ -22,7 +22,7 @@ public class Endereco {
     @Column(name = "alameda", nullable = false)
     private String alameda;
 
-    @Column(name = "bairro", nullable = false)
+    @Column(name = "bairo", nullable = false)
     private String bairro;
 
     @Column(name = "cep", nullable = false)

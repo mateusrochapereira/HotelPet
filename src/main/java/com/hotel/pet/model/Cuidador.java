@@ -22,9 +22,12 @@ public class Cuidador {
     private Long id;
 
     @OneToOne
+    @JoinColumn(name = "id_user")
     private User user;
 
     @OneToOne
+    @JoinColumn(name = "id_endereco")
+
     private Endereco endereco;
 
     @Column(name = "desc_local", nullable = false)

@@ -18,6 +18,7 @@ import java.util.List;
 public class Cuidador {
     @JsonIgnore
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -25,13 +26,13 @@ public class Cuidador {
     @JoinColumn(name = "id_user")
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "id_endereco")
 
     private Endereco endereco;
 
     @Column(name = "desc_local", nullable = false)
-    private String desc_local;
+    private String descLocal;
 
     @OneToMany
     @JoinColumn(name = "id_tipo_cuidador")

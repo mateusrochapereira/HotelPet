@@ -2,9 +2,8 @@ package com.hotel.pet.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 
 @Builder
@@ -26,6 +25,17 @@ public class CuidadorTemCategoriaPet {
     @Column(name = "tamanho", nullable = false)
     private double tamanho;
 
+    @Column(name="raca", nullable = false)
+    private String raca;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_categoria_pet", insertable = false, updatable = false)
+    private CategoriaPet categoriaPets;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_tipo_cuidador", insertable = false, updatable = false)
+    private Cuidador cuidador;
 
 }
 

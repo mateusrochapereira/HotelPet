@@ -33,10 +33,7 @@ public class Cuidador {
     @Column(name = "desc_local", nullable = false)
     private String desc_local;
 
-    @OneToMany
-    @JoinColumn(name = "id_tipo_cuidador")
 
-    private List<CuidadorTemCategoriaPet> cuidadorTemCategoriaPets;
 
 
 }

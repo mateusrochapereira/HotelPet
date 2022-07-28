@@ -18,6 +18,7 @@ public class User {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    // TODO: 27/07/2022 fazer alteracao no scrip do abnco pro email ficar UNIQUE
     @Column(name = "email", nullable = false)
     private String email;
 

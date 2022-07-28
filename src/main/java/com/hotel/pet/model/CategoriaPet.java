@@ -14,13 +14,13 @@ import java.util.List;
 @Table(name = "categoria_pet")
 public class CategoriaPet {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
+
     @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
-    @OneToMany
-    @JoinColumn(name = "id_categoria_pet")
-    private List<CuidadorTemCategoriaPet> categoriaPets;
+
 }

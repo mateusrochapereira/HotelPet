@@ -29,11 +29,11 @@ public class CuidadorTemCategoriaPet {
     private String raca;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_categoria_pet", insertable = false, updatable = false)
     private CategoriaPet categoriaPets;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_tipo_cuidador", insertable = false, updatable = false)
     private Cuidador cuidador;
 

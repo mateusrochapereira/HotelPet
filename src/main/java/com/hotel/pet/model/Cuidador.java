@@ -18,6 +18,8 @@ import java.util.List;
 public class Cuidador {
     @JsonIgnore
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")
+
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -25,9 +27,9 @@ public class Cuidador {
     @JoinColumn(name = "id_user")
     private User user;
 
-    @OneToOne
+    // TODO: 30/07/2022 SEMPRE COLOCAR O PERSIST EM RELACIONAMENTOS COM TABELAS ENCADEADAS PARA NAO DA ERRO CASO ALGUMA ESTEJA VAZIA 
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_endereco")
-
     private Endereco endereco;
 
     @Column(name = "desc_local", nullable = false)

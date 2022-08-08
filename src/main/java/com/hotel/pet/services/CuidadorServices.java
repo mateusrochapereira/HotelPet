@@ -23,13 +23,14 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CuidadorServices {
-    private final CuidadorRepository cuidadorRepository;
+    private final CuidadorTemCategoriaPetRepository cuidadorTemCategoriaPetRepositoryRepository;
     private final UserRepository userRepository;
     private final CuidadorTemCategoriaPetRepository cuidadorCategoriaPetRepository;
-    private final CategoriaPetRepository categoriaPetRepository;
+    private final CuidadorRepository cuidadorRepository;
+    private final CategoriaPetRepository categoriaPetRepository ;
 
-    public List<Cuidador> listarCuidadores() {
-        return cuidadorRepository.findAll();
+    public List<CuidadorTemCategoriaPet> listarCuidadores() {
+        return cuidadorCategoriaPetRepository.findAll();
     }
 
     public List<CuidadorFiltroEnderecoResponse> listarTodosPorEnderco(String endereco) {
@@ -45,7 +46,7 @@ public class CuidadorServices {
         cuidadorRepository.save(cuidador);
 
        CategoriaPet categoriaPet = CategoriaPetMapper.convert(cuidadorRequest.getCategoriaPetRequest());
-       categoriaPetRepository.save(categoriaPet);
+        categoriaPetRepository.save(categoriaPet);
 
 
        CuidadorTemCategoriaPet cuidadorTemCategoriaPet = CuidadorTemCategoriaPetMapper.convert(cuidador, categoriaPet, cuidadorRequest.getCategoriaPetRequest());

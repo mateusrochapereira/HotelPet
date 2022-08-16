@@ -22,6 +22,7 @@ public class CuidadorTemCategoriaPetMapper {
                 .raca(categoriaPetRequest.getRaca())
                 .peso((categoriaPetRequest.getPeso()))
                 .cuidador(cuidador)
+
                 .categoriaPets(categoriaPet)
                 .build();
     }

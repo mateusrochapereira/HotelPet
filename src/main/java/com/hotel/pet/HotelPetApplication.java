@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HotelPetApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HotelPetApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HotelPetApplication.class, args);
+    }
 
 }

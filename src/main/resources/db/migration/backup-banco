@@ -1,3 +1,10 @@
+create table telefone
+(
+    id     int auto_increment
+        primary key,
+    ddd    int(3)  not null,
+    numero int(13) not null
+);
 
 create table usuario
 (
@@ -8,8 +15,9 @@ create table usuario
     nome        varchar(255) not null,
     sobrenome   varchar(255) not null,
     cpf         varchar(11)  not null,
-    telefone    varchar(11) not null
-
+    id_telefone int          not null,
+    constraint fk_telefone
+        foreign key (id_telefone) references telefone (id)
 );
 
 
@@ -57,6 +65,3 @@ create table cuidador_tem_categoria_pet
     constraint cuidador_tem_categoria_pet_ibfk_2
         foreign key (id_tipo_cuidador) references cuidador (id)
 );
-
-
-

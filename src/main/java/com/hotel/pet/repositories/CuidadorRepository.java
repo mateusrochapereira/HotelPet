@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public interface CuidadorRepository extends JpaRepository<Cuidador, Long> {
-
+//fazer o filtro
     @Query(
             "select  new com.hotel.pet.dtos.responses.CuidadorFiltroEnderecoResponse(concat(u.nome,' ',u.sobreNome ), e.quadra, e.alameda)"
                     + " from Cuidador c"

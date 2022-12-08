@@ -34,8 +34,7 @@ public class User {
     @Column(name = "cpf", nullable = false)
     private String cpf;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_telefone")
-    private Telefone telefone;
+    @Column(name = "telefone", nullable = false)
+    private String telefone;
 
 }

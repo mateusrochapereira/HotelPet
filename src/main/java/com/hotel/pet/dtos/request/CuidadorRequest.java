@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +18,7 @@ public class CuidadorRequest {
     private String descricaoLocal;
 
     @NotBlank
+    @Email
     private String email;
 
     @Valid

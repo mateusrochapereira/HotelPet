@@ -1,14 +1,19 @@
 package com.hotel.pet.services.mapper;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.hotel.pet.dtos.request.UserRequest;
+import com.hotel.pet.model.User;
+import lombok.experimental.UtilityClass;
 
-@Configuration
+@UtilityClass
 public class UserMapper {
-
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
+    public User convert(UserRequest userRequest) {
+        return User.builder()
+                .cpf(userRequest.getCpf())
+                .email(userRequest.getEmail())
+                .senha(userRequest.getSenha())
+                .nome(userRequest.getNome())
+                .sobreNome(userRequest.getNome())
+                .telefone(userRequest.getNome())
+                .build();
     }
 }

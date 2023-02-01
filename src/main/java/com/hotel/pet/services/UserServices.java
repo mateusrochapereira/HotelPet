@@ -4,11 +4,9 @@ import com.hotel.pet.dtos.request.UserRequest;
 import com.hotel.pet.model.User;
 import com.hotel.pet.model.exception.UserNaoEncontrado;
 import com.hotel.pet.repositories.UserRepository;
-import com.hotel.pet.services.convert.UserConvert;
 import com.hotel.pet.services.mapper.UserMapper;
 import com.hotel.pet.services.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +21,7 @@ public class UserServices {
 
 
     public void salvarUser(UserRequest userRequest) {
-       User user = UserConvert.convert(userRequest);
+       User user = UserMapper.convert(userRequest);
 
         userRepository.save(user);
 

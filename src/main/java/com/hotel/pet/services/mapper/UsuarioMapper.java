@@ -1,11 +1,14 @@
 package com.hotel.pet.services.mapper;
 
+import com.hotel.pet.dtos.request.UserRequest;
 import com.hotel.pet.model.Telefone;
 import com.hotel.pet.model.User;
 import lombok.experimental.UtilityClass;
+import org.modelmapper.ModelMapper;
 
 @UtilityClass
 public class UsuarioMapper {
+    private ModelMapper modelMapper;
 
     public User convert(User userAtualizado, User userDesatualizado) {
 
@@ -19,5 +22,9 @@ public class UsuarioMapper {
                 .telefone(userAtualizado.getTelefone())
 
                 .build();
+    }
+
+    public UserRequest toModel(User user){
+        return modelMapper.map(user, UserRequest.class);
     }
 }

@@ -1,8 +1,10 @@
 package com.hotel.pet.services;
 
+import com.hotel.pet.dtos.request.UserRequest;
 import com.hotel.pet.model.User;
 import com.hotel.pet.model.exception.UserNaoEncontrado;
 import com.hotel.pet.repositories.UserRepository;
+import com.hotel.pet.services.mapper.UserMapper;
 import com.hotel.pet.services.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +18,13 @@ public class UserServices {
 
     final UserRepository userRepository;
 
-    public void salvarUser(User user) {
-        userRepository.save(user);
-    }
+    public void salvarUser(UserRequest userRequest) {
+        User user = UserMapper.convert(userRequest);
 
-    public ResponseEntity<ResponseEntity> removerUsuarioporId(Integer id) {
+        userRepository.save(user);
+
+    }
+        public ResponseEntity<ResponseEntity> removerUsuarioporId(Integer id) {
         if (!userRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }

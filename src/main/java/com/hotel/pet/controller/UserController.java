@@ -1,5 +1,6 @@
 package com.hotel.pet.controller;
 
+import com.hotel.pet.dtos.request.UserDto;
 import com.hotel.pet.model.User;
 import com.hotel.pet.model.exception.UserNaoEncontrado;
 import com.hotel.pet.services.UserServices;
@@ -17,8 +18,8 @@ public class UserController {
     private final UserServices userServices;
 
     @PostMapping
-    public void adicionarUser(@RequestBody User user) {
-        userServices.salvarUser(user);
+    public void adicionarUser(@RequestBody UserDto userDto) {
+        userServices.salvarUser(userDto);
     }
 
     @DeleteMapping("/removerUsuarioPorId/{id}")

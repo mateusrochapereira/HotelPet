@@ -1,6 +1,5 @@
 package com.hotel.pet.services.mapper;
 
-import com.hotel.pet.dtos.request.UserDto;
 import com.hotel.pet.model.Telefone;
 import com.hotel.pet.model.User;
 import lombok.experimental.UtilityClass;
@@ -8,19 +7,17 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class UsuarioMapper {
 
-    public User convert(UserDto userdto) {
+    public User convert(User userAtualizado, User userDesatualizado) {
 
         return User.builder()
-                .id(user.getId())
-                .nome(userdto.getNome())
-                .senha(userdto.getSenha())
-                .sobreNome((userdto.getSobreNome()))
-                .cpf(userdto.getCpf())
-                .email(userdto.getEmail())
-                .telefone(userdto.getTelefone())
+                .id(userDesatualizado.getId())
+                .nome(userAtualizado.getNome())
+                .senha(userAtualizado.getSenha())
+                .sobreNome((userAtualizado.getSobreNome()))
+                .cpf(userAtualizado.getCpf())
+                .email(userAtualizado.getEmail())
+                .telefone(userAtualizado.getTelefone())
 
                 .build();
     }
-
-    private User getId(UserDto.)
 }

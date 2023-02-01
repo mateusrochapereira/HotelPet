@@ -1,9 +1,7 @@
 package com.hotel.pet.services;
 
-import com.hotel.pet.dtos.request.UserDto;
 import com.hotel.pet.model.User;
 import com.hotel.pet.model.exception.UserNaoEncontrado;
-import com.hotel.pet.repositories.UserDtoRepository;
 import com.hotel.pet.repositories.UserRepository;
 import com.hotel.pet.services.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
@@ -16,32 +14,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServices {
 
-        final UserRepository userRepository;
-         final UsuarioMapper usuarioMapper;
-    final
-        public void salvarUser(UserDto userDto) {
-           User user  = UsuarioMapper.convert(userDto);
-            userRepository.save(user);
-        }
+    final UserRepository userRepository;
 
-        public ResponseEntity<ResponseEntity> removerUsuarioporId(Integer id) {
-            if (!userRepository.existsById(id)) {
-                return ResponseEntity.notFound().build();
-            }
-            userRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }
+    public void salvarUser(User user) {
+        userRepository.save(user);
+    }
 
-        public List<User> listarUsuarios() {
-            return userRepository.findAll();
+    public ResponseEntity<ResponseEntity> removerUsuarioporId(Integer id) {
+        if (!userRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
         }
+        userRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 
-        public User atualizarUsuario(Integer id, User userAtualizado) {
-            User userDesatualizado = userRepository.findById(id)
-                    .orElseThrow(UserNaoEncontrado::new);
+    public List<User> listarUsuarios() {
+        return userRepository.findAll();
+    }
 
-            User usuarioBd = UsuarioMapper.convert(userAtualizado, userDesatualizado);
-            return userRepository.save(usuarioBd);
-        }
+    public User atualizarUsuario(Integer id, User userAtualizado) {
+        User userDesatualizado = userRepository.findById(id)
+                .orElseThrow(UserNaoEncontrado::new);
+
+        User usuarioBd = UsuarioMapper.convert(userAtualizado, userDesatualizado);
+        return userRepository.save(usuarioBd);
+    }
 }
 

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
@@ -18,7 +19,7 @@ public class UserController {
     private final UserServices userServices;
 
     @PostMapping
-    public void adicionarUser(@RequestBody UserRequest userRequest) {
+    public void adicionarUser(@Valid  @RequestBody UserRequest userRequest) {
         userServices.salvarUser( userRequest);
     }
 
@@ -33,9 +34,10 @@ public class UserController {
     }
 
     @PutMapping("atualizacaoUsuario/{id}")
-    public ResponseEntity<User> atualizarUsuario(@PathVariable Integer id, @RequestBody User user) {
+    public ResponseEntity<User>
+        atualizarUsuario( @Valid @PathVariable Integer id, @RequestBody UserRequest userRequest) {
         try {
-            User userAtualizado = userServices.atualizarUsuario(id, user);
+            User userAtualizado = userServices.atualizarUsuario(id, userRequest);
             return ResponseEntity.ok(userAtualizado);
         } catch (UserNaoEncontrado u) {
             return ResponseEntity.notFound().build();

@@ -16,4 +16,17 @@ public class UserMapper {
                 .telefone(userRequest.getNome())
                 .build();
     }
+
+    public User convertParaAtualizar(UserRequest userRequest, User user){
+        return User.builder()
+                .id(user.getId())
+                .nome(userRequest.getNome())
+                .senha(userRequest.getSenha())
+                .sobreNome((userRequest.getSobreNome()))
+                .cpf(userRequest.getCpf())
+                .email(userRequest.getEmail())
+                .telefone(userRequest.getTelefone())
+
+                .build();
+    }
 }

@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Service
@@ -43,7 +42,6 @@ public class UserServices {
     public void atualizarUsuario(Integer id, UserRequest userRequest) {
         User user = new User();
         userRepository.findById(id)
-
                 .map(usuarioExistente -> {
                     user.setId(usuarioExistente.getId());
                     User usuarioBd = UserMapper.convertParaAtualizar(userRequest, user);

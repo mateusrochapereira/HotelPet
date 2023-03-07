@@ -36,7 +36,7 @@ public class UserController {
 
     @PutMapping("/atualizacaoUsuario/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizarUsuario(@Valid @PathVariable Integer id, @RequestBody UserRequest userRequest) {
+    public void atualizarUsuario(@PathVariable Integer id, @Valid @RequestBody UserRequest userRequest) {
 
         userServices.atualizarUsuario(id, userRequest);
 

@@ -14,23 +14,23 @@ import javax.validation.constraints.NotBlank;
 public class UserRequest {
     private Integer id;
 
-    @NotBlank(message = "Email obrigatório")
-    @Email(message = "formato do email errado")
+    @NotBlank(message = "{campo.email.invalido}")
+    @Email(message = "{campo.email.invalido}")
     private String email;
 
-    @NotBlank(message = "Senha obrigatório")
+    @NotBlank(message = "{campo.senha.obrigatorio}")
     private String senha;
 
-    @NotBlank(message = "Nome obrigatório")
+    @NotBlank(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @NotBlank(message = "SobreNome obrigatório")
+    @NotBlank(message = "{campo.sobrenome.obrigatorio}")
     private String sobreNome;
 
-    @NotBlank(message = "Cpf obrigatório")
-    @CPF(message = "Cpf deve ter 11 digitos")
+    @NotBlank(message ="{campo.cpf.obrigatorio}")
+    @CPF(message = "{campo.cpf.invalido}")
     private String cpf;
 
-    @NotBlank(message = "Telefone obrigatório")
+    @NotBlank(message = "{campo.telefone.obrigatorio}")
     private String telefone;
 }

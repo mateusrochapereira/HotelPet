@@ -2,6 +2,7 @@ package com.hotel.pet.services;
 
 import com.hotel.pet.dtos.request.UserRequest;
 import com.hotel.pet.model.User;
+import com.hotel.pet.model.exception.UserNaoEncontradoException;
 import com.hotel.pet.repositories.UserRepository;
 import com.hotel.pet.services.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,8 @@ public class UserServices {
                     userRepository.delete(usuario);
                     return usuario;
                 }).orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado"));
+                          new UserNaoEncontradoException());
+                                //ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado"));
 
     }
 
@@ -48,7 +50,8 @@ public class UserServices {
                     userRepository.save(usuarioBd);
                     return usuarioExistente;
                 }).orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não existe"));
+                        new UserNaoEncontradoException() );
+                                //ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não existe"));
 
 
     }

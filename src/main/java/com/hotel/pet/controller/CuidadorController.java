@@ -20,17 +20,11 @@ public class CuidadorController {
 
     private final CuidadorServices cuidadorServices;
 
-    // TODO: 08/08/2022 Perguntar pro victtor pq aqui ele só retorna uma lista de cuidadores e nao de pets tbm
-    @GetMapping("/listarCuidadores")
-    public List<CuidadorTemCategoriaPet> listarCuidadores() {
-        return cuidadorServices.listarCuidadores();
-    }
 
     @GetMapping("/findByEndereco")
     @ResponseStatus(HttpStatus.OK)
     public List<CuidadorFiltroEnderecoResponse> listarPorEndereco(
             @RequestParam String endereco) {
-
 
         return cuidadorServices.listarTodosPorEnderco(endereco);
     }

@@ -29,9 +29,8 @@ public class CuidadorServices {
     private final CuidadorRepository cuidadorRepository;
     private final CategoriaPetRepository categoriaPetRepository ;
 
-    public List<CuidadorTemCategoriaPet> listarCuidadores() {
-        return cuidadorCategoriaPetRepository.findAll();
-    }
+
+
 
     public List<CuidadorFiltroEnderecoResponse> listarTodosPorEnderco(String endereco) {
         return cuidadorRepository.findByEndereco(endereco);
